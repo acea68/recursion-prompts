@@ -47,13 +47,22 @@ var arraySum = function (array) {
   }
   return ans;
 };
-console.log(arraySum([1, [2, 3], [[4]], 5])); // 15
+// console.log(arraySum([1, [2, 3], [[4]], 5])); // 15
+// console.log(arraySum([3,[0,[-34,[-7,[18]]]]])); // -20
 
-/*
 // 4. Check if a number is even.
 var isEven = function (n) {
+  n = Math.abs(n);
+  if (n - 2 === 0 || n === 0) {
+    return true;
+  } else if (n - 2 > 1) {
+    return isEven(n - 2)
+  }
+  return false;
 };
+console.log(isEven(0), isEven(48), isEven(5));
 
+/*
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
