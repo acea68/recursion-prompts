@@ -50,6 +50,7 @@ var arraySum = function (array) {
 // console.log(arraySum([1, [2, 3], [[4]], 5])); // 15
 // console.log(arraySum([3,[0,[-34,[-7,[18]]]]])); // -20
 
+
 // 4. Check if a number is even.
 var isEven = function (n) {
   n = Math.abs(n);
@@ -65,12 +66,12 @@ var isEven = function (n) {
 
 // 5. Sum all integers below a given integer.
 var sumBelow = function (n) {
-  if ( n === 0) {
+  if (n === 0) {
     return 0;
   } else if (n < 0) {
     return (n + 1) + sumBelow(n + 1);
   } else {
-  return (n - 1) + sumBelow(n - 1)
+    return (n - 1) + sumBelow(n - 1)
   }
 };
 // console.log(sumBelow(5)); // 10
@@ -78,11 +79,21 @@ var sumBelow = function (n) {
 // console.log(sumBelow(-5)); // -10
 // console.log(sumBelow(-10)); // -45
 
-/*
 // 6. Get the integers within a range (x, y).
-// range(2,9); // [3,4,5,6,7,8]
 var range = function (x, y) {
+  if (x === y) {
+    return [];
+  } else if (y - x === 1) {
+    return [x + 1];
+  }
+  var result = range(x, y - 1);
+  result.push(y - 1);
+  if (result[0] === result[1]) {
+    result.shift();
+  }
+  return result;
 };
+// range(2,9); // [3,4,5,6,7,8]
 
 // 7. Compute the exponent of a number.
 // The exponent of a number says how many times the base number is used as a factor.
@@ -90,8 +101,27 @@ var range = function (x, y) {
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function (base, exp) {
+  if (exp === 0) {
+    return 1;
+  } else if (exp === 1) {
+    return base;
+  } else if (exp > 1) {
+    exp--;
+    return base * exponent(base, exp);
+  } else if (exp < 0) {
+    exp++;
+    return exponent(base, exp)/base;
+  }
 };
+// console.log(exponent(2, 1)); // 2
+// console.log(exponent(1, 3)); // 1
+// console.log(exponent(0, 3)); // 0
+// console.log(exponent(2, 3)); // 8
+// console.log(exponent(23, 0)); // 1
+// console.log(exponent(16, 1 / 2)); // 4
+// console.log(exponent(16, 1 / 2)); // 4
 
+/*
 // 8. Determine if a number is a power of two.
 // powerOfTwo(1); // true
 // powerOfTwo(16); // true
