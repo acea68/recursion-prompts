@@ -60,15 +60,25 @@ var isEven = function (n) {
   }
   return false;
 };
-console.log(isEven(0), isEven(48), isEven(5));
+// console.log(isEven(0), isEven(48), isEven(5));
+
+
+// 5. Sum all integers below a given integer.
+var sumBelow = function (n) {
+  if ( n === 0) {
+    return 0;
+  } else if (n < 0) {
+    return (n + 1) + sumBelow(n + 1);
+  } else {
+  return (n - 1) + sumBelow(n - 1)
+  }
+};
+// console.log(sumBelow(5)); // 10
+// console.log(sumBelow(10)); // 45
+// console.log(sumBelow(-5)); // -10
+// console.log(sumBelow(-10)); // -45
 
 /*
-// 5. Sum all integers below a given integer.
-// sumBelow(10); // 45
-// sumBelow(7); // 21
-var sumBelow = function (n) {
-};
-
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function (x, y) {
