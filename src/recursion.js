@@ -121,14 +121,28 @@ var exponent = function (base, exp) {
 // console.log(exponent(16, 1 / 2)); // 4
 // console.log(exponent(16, 1 / 2)); // 4
 
-/*
+
 // 8. Determine if a number is a power of two.
 // powerOfTwo(1); // true
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function (n) {
+  if (n / 2 === 1) {
+    return true
+  } else if (n === 0) {
+    return false;
+  } else if (Number.isInteger(n / 2)) {
+    return powerOfTwo(n / 2);
+  }
+  return false;
 };
+console.log(powerOfTwo(1)); // true (1^2)
+console.log(powerOfTwo(16)); // true (4^2)
+console.log(powerOfTwo(10)); // false
+console.log(powerOfTwo(2)); // t
+console.log(powerOfTwo(128)); // t
 
+/*
 // 9. Write a function that reverses a string.
 var reverse = function (string) {
 };
